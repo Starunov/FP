@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Создание курса</h1>
+    <form id="data" action="/courses" method="post">
+        <div class="form_settings">
+          <p><span>Название</span><input type="text" name="name" value="" /></p>
+          <p><span>Категория</span><select name="category_id">
+              <option value="">Выберите категорию</option>
+              {% for cat in categories %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+              {% endfor %}
+          </select></p>
+          <p style="padding-top: 15px"><span>&nbsp;</span><button class="submit">Создать</button>
+        </div>
+    </form>
+{% endblock %}

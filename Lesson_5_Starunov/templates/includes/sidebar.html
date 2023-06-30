@@ -1,0 +1,40 @@
+<h3>Предстоящие задачи к уроку 5</h3>
+{% for task in tasks %}
+    <h4 id="{{ task.task_head }}">{{ task.task_head }}</h4>
+    <h5>{{ task.current_date }}</h5>
+    <div style="border-bottom: solid 1px #aaa">
+        <p>
+            {{ task.task_body }}
+        </p>
+        <p></p>
+<!--        <a href="/examples">Read more</a>-->
+        <h5 style="font: normal 100% arial">
+            Выполнено:
+            {% if task.mark %}
+                &#9989
+            {% else %}
+                &#10060
+            {% endif %}
+        </h5>
+    </div>
+    <p></p>
+{% endfor %}
+
+<h3>Полезные ссылки</h3>
+<ul>
+    {% for task in tasks %}
+        <li><a href="#{{ task.task_head }}">
+            {{ task.task_head[:10] + '...' if task.task_head|length() > 10 else task.task_head }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h3>Search</h3>
+<form method="post" action="#" id="search_form">
+    <p>
+        <input class="search" type="text" name="search_field" placeholder="Enter keywords....."/>
+        <input name="search" type="image" style="border: 0; margin: 0 0 0 40px;"
+               src="https://www.amiris.fr/wp-content/uploads/2019/07/icn_evaluez.png" alt="Search" title="Search"/>
+    </p>
+</form>

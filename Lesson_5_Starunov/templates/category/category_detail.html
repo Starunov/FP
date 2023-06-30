@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ category.name }} {% endblock %}
+
+{% block content %}
+    <form action="/categories" method="post">
+        <div class="form_settings">
+          <p><span>Название</span><input class="contact" type="text" name="name" value="{{ category.name }}" /></p>
+          <p><span>Курсы</span>
+            <textarea
+                  style="resize: none"
+                  disabled
+                  name="courses"
+                  rows="10">
+                    {% for course in category.courses %}
+                      {{ course.name }}
+                    {% endfor %}
+            </textarea></p>
+          <p style="padding-top: 15px">
+            <span>&nbsp;</span>
+          </p>
+        </div>
+    </form>
+
+
+{% endblock %}

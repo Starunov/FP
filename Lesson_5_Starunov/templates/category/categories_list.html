@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+   <!-- insert the page content here -->
+  <h1>Категории курсов</h1>
+  <ul>
+    {% for category in categories %}
+      <li style="list-style: inside"><a href="/categories?category_id={{ category.id }}">{{ category.name }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <p></p>
+  <a href="/create-category">Добавить категорию</a>
+{% endblock %}

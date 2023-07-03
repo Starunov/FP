@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Создание пользователя</h1>
+    <form action="/users" method="post">
+        <div class="form_settings">
+          <p>
+              <span>Категория</span>
+              <select name="category" >
+                  <option value="student">Студент</option>
+                  <option value="teacher">Преподаватель</option>
+              </select>
+          </p>
+          <p><span>Фамилия</span><input type="text" name="lastname" value="{{ data.lastname }}" required/></p>
+          <p><span>Имя</span><input type="text" name="firstname" value="{{ data.firstname }}" required/></p>
+          <p><span>Возраст</span><input type="number" name="age" value="{{ data.age }}" required/></p>
+          <p style="padding-top: 15px"><span>&nbsp;</span><button class="submit">Создать</button>
+        </div>
+    </form>
+{% endblock %}

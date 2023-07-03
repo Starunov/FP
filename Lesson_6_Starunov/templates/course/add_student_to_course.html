@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Запись на курс {{ course_name }}</h1>
+    <form action="/add-to-course" method="post">
+        <div class="form_settings">
+          <p>
+              <span>Студент</span>
+              <select name="student" >
+                {% for student in students %}
+                  <option value="{{ student.fullname }}">{{ student.fullname }}</option>
+                {% endfor %}
+              </select>
+          </p>
+          <input hidden type="text" name="course_name" value="{{ course_name }}"/>
+          <p style="padding-top: 15px"><span>&nbsp;</span><button class="submit">Записать</button>
+        </div>
+    </form>
+{% endblock %}

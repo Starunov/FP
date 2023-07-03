@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Создание категории</h1>
+    <form action="/categories" method="post">
+        <div class="form_settings">
+          <p><span>Название</span><input type="text" name="name" value="" /></p>
+          <p style="padding-top: 15px"><span>&nbsp;</span><button class="submit">Создать</button>
+        </div>
+    </form>
+{% endblock %}

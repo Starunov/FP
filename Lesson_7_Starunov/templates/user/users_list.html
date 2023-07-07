@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <a href="/create-user">Создать пользователя</a>
+    <h1>Список пользователей</h1>
+    <div style="display: flex">
+        <div style="flex: 1">
+            <h3>Студенты</h3>
+            {% for student in students %}
+                <ul>
+                    <li><a href="/users?username={{ student.fullname }}">{{ student.fullname }}</a></li>
+                </ul>
+            {% endfor %}
+        </div>
+        <div style="flex: 1">
+            <h3>Преподаватели</h3>
+            {% for teacher in teachers %}
+                <ul>
+                    <li><a href="#">{{ teacher.fullname }}</a></li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

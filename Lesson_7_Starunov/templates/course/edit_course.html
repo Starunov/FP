@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ name }}</h1>
+    <form id="data" action="/courses" method="post">
+        <div class="form_settings">
+          <p><span>Название</span><input type="text" name="name" value="{{ name }}" /></p>
+          <p><span>Категория</span><select name="category_id">
+              <option value="">Выберите категорию</option>
+              {% for cat in categories %}
+                {% if cat.id == category_id %}
+                  <option selected value="{{ cat.id }}">{{ cat.name }}</option>
+                {% else %}
+                  <option value="{{ cat.id }}">{{ cat.name }}</option>
+                {% endif %}
+              {% endfor %}
+          </select></p>
+          <div style="display: flex; margin-top: 10px">
+            <div style="flex: 3">Участники</div>
+            <div style="flex: 4.8; border: solid 1px #cccccc; width: 70%">
+              {% for student in students %}
+                <p style="padding-left: 5px">
+                   {{ student.fullname }}
+                </p>
+              {% endfor %}
+            </div>
+            <div style="flex: 1.2"></div>
+          </div>
+          <p><a href="/add-to-course?course_name={{ name }}">Добавить участника</a></p>
+          <p style="padding-top: 15px"><span>&nbsp;</span><button class="submit">Изменить</button>
+        </div>
+    </form>
+{% endblock %}
